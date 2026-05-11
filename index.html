@@ -14,6 +14,7 @@
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --header-height: 90px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -26,93 +27,109 @@
             overflow-x: hidden;
         }
 
-        /* --- UI Elements --- */
         .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
         .section-padding { padding: 120px 0; }
         .tag { color: var(--accent); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 15px; }
         .h2-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 40px; text-transform: uppercase; }
 
-        /* --- Header --- */
+        /* --- Header Melhorado --- */
         header {
-            position: fixed; width: 100%; top: 0; z-index: 1000;
-            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px);
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9); 
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
         }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            height: var(--header-height); 
+        }
         .logo { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: -1px; }
         .logo span { color: var(--accent); }
         .nav-links { display: flex; list-style: none; gap: 30px; }
         .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; transition: var(--transition); }
         .nav-links a:hover { color: var(--text-main); }
 
-        /* --- Hero --- */
+        /* --- Hero Corrigido --- */
         .hero {
-            height: 100vh; display: flex; align-items: center; position: relative;
-            background: linear-gradient(to right, rgba(10,10,10,0.9), transparent), 
+            min-height: 100vh; 
+            padding-top: var(--header-height); /* Evita que o cabeçalho cubra o título */
+            display: flex; 
+            align-items: center; 
+            position: relative;
+            background: linear-gradient(to right, rgba(10,10,10,0.95), rgba(10,10,10,0.7)), 
                         url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover; background-position: center;
+            background-size: cover; 
+            background-position: center;
         }
-        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; line-height: 0.9; margin: 20px 0; letter-spacing: -4px; text-transform: uppercase; }
-        .hero p { max-width: 500px; color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 900; line-height: 1; margin: 20px 0; letter-spacing: -3px; text-transform: uppercase; }
+        .hero p { max-width: 550px; color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem; }
         
-        .btn-group { display: flex; gap: 20px; }
-        .btn { padding: 18px 32px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; text-decoration: none; border-radius: 2px; transition: var(--transition); display: inline-block; }
+        .btn-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 18px 32px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; text-decoration: none; border-radius: 2px; transition: var(--transition); display: inline-block; border: none; cursor: pointer; }
         .btn-primary { background: var(--accent); color: white; }
-        .btn-outline { border: 1px solid white; color: white; }
+        .btn-outline { border: 1px solid white; color: white; background: transparent; }
         .btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
-        .hero-stats { display: flex; gap: 50px; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px; }
-        .stat-box h3 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); }
-        .stat-box p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
+        .hero-stats { display: flex; gap: 40px; margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px; }
+        .stat-box h3 { font-size: 2.2rem; font-weight: 800; color: var(--text-main); }
+        .stat-box p { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
 
-        /* --- About --- */
+        /* --- Estilos Adicionais de Seções --- */
         .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; }
         .about-text p { font-size: 1.15rem; color: var(--text-dim); margin-bottom: 25px; }
         .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
         .pillar-item h4 { color: var(--accent); margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; }
         .pillar-item p { font-size: 0.9rem; line-height: 1.4; color: var(--text-dim); }
 
-        /* --- Services --- */
         .services { background: var(--surface); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-        .service-card { background: var(--surface); padding: 60px 40px; transition: var(--transition); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+        .service-card { background: var(--surface); padding: 50px 40px; transition: var(--transition); }
         .service-card:hover { background: #1a1a1a; }
-        .service-card h3 { font-size: 1.3rem; margin-bottom: 15px; text-transform: uppercase; }
-        .service-card p { color: var(--text-dim); font-size: 0.95rem; }
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; }
+        .service-card p { color: var(--text-dim); font-size: 0.9rem; }
 
-        /* --- Portfolio Expandido --- */
-        .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .portfolio-item { position: relative; height: 400px; background: #000; overflow: hidden; border-radius: 4px; border: 1px solid var(--border); }
+        .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 20px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .portfolio-item { position: relative; height: 350px; background: #000; overflow: hidden; border-radius: 4px; border: 1px solid var(--border); }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: var(--transition); }
         .portfolio-item:hover img { opacity: 0.15; transform: scale(1.05); }
-        .portfolio-content { position: absolute; bottom: 40px; left: 40px; pointer-events: none; }
-        .portfolio-content span { font-size: 0.65rem; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        .portfolio-content h3 { font-size: 1.4rem; text-transform: uppercase; margin-top: 10px; font-weight: 900; }
+        .portfolio-content { position: absolute; bottom: 30px; left: 30px; pointer-events: none; }
+        .portfolio-content span { font-size: 0.6rem; color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .portfolio-content h3 { font-size: 1.2rem; text-transform: uppercase; margin-top: 10px; font-weight: 900; }
 
-        /* --- Differentials --- */
-        .diff-list { counter-reset: section; }
-        .diff-item { display: flex; align-items: flex-start; gap: 40px; padding: 40px 0; border-bottom: 1px solid var(--border); }
-        .diff-item::before { content: "0" counter(section); counter-increment: section; font-weight: 800; color: var(--accent); font-size: 1.5rem; }
-        .diff-item h3 { font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; }
+        .diff-item { display: flex; align-items: flex-start; gap: 30px; padding: 30px 0; border-bottom: 1px solid var(--border); }
+        .diff-item h3 { font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase; }
         .diff-item p { color: var(--text-dim); max-width: 600px; }
 
-        /* --- Footer --- */
-        footer { padding: 100px 0 50px; background: #050505; border-top: 4px solid var(--accent); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
-        .footer-col h4 { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 30px; color: var(--accent); }
+        footer { padding: 80px 0 40px; background: #050505; border-top: 4px solid var(--accent); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; color: var(--accent); }
         .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 12px; }
-        .footer-col a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; transition: 0.3s; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { text-decoration: none; color: var(--text-dim); font-size: 0.85rem; transition: 0.3s; }
         .footer-col a:hover { color: white; }
-        .contact-info { font-size: 1.2rem; font-weight: 800; }
+        .contact-info { font-size: 1.1rem; font-weight: 800; }
 
-        .talk-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 999; display: flex; align-items: center; gap: 10px; transition: var(--transition); }
-        .talk-btn:hover { transform: translateY(-5px); }
+        .talk-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 999; display: flex; align-items: center; gap: 10px; transition: var(--transition); font-size: 0.9rem; }
 
+        /* --- Ajustes Responsivos --- */
         @media (max-width: 1024px) {
-            .about-grid, .portfolio-grid, .footer-grid { grid-template-columns: 1fr; }
+            :root { --header-height: 70px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .nav-links { display: none; }
+            .hero-stats { gap: 20px; flex-wrap: wrap; }
+            .portfolio-header { align-items: flex-start; flex-direction: column; }
+        }
+
+        @media (max-width: 600px) {
+            .btn-group { flex-direction: column; }
+            .btn { text-align: center; width: 100%; }
+            .hero h1 { letter-spacing: -1px; }
         }
     </style>
 </head>
@@ -137,7 +154,7 @@
         <div class="container">
             <span class="tag">Engenharia Certificada</span>
             <h1>Engenharia em<br>Estruturas Metálicas<br>de Alta Performance</h1>
-            <p>Soluções industriais em aço com precisão, resistência e inovação para grandes obras.</p>
+            <p>Soluções industriais em aço com precisão, resistência e inovação para grandes obras de infraestrutura.</p>
             <div class="btn-group">
                 <a href="#contato" class="btn btn-primary">Solicitar Orçamento</a>
                 <a href="#portfolio" class="btn btn-outline">Ver Portfólio</a>
@@ -155,126 +172,12 @@
                 <span class="tag">// Quem Somos</span>
                 <h2 class="h2-title">Especialistas em Estruturas Metálicas</h2>
                 <p>A João Dourado Metal Structures é uma empresa especializada em engenharia de estruturas metálicas industriais, oferecendo soluções completas em aço para grandes obras e projetos personalizados.</p>
-                <p>Nossa equipe qualificada trabalha com equipamentos de última geração para garantir a excelência desde o planejamento até a montagem final.</p>
             </div>
             <div class="pillars">
-                <div class="pillar-item">
-                    <h4>Precisão</h4>
-                    <p>Engenharia exata em cada detalhe estrutural.</p>
-                </div>
-                <div class="pillar-item">
-                    <h4>Qualidade Estrutural</h4>
-                    <p>Materiais certificados e processos rigorosos.</p>
-                </div>
-                <div class="pillar-item">
-                    <h4>Tecnologia</h4>
-                    <p>Equipamentos modernos e técnicas avançadas.</p>
-                </div>
-                <div class="pillar-item">
-                    <h4>Confiabilidade</h4>
-                    <p>Compromisso com prazos e resultados.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services section-padding" id="servicos">
-        <div class="container">
-            <span class="tag">Nossos Serviços</span>
-            <h2 class="h2-title">Soluções Completas</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Estruturas Industriais</h3>
-                    <p>Projetos completos para indústrias, fábricas e grandes empreendimentos comerciais.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Galpões Metálicos</h3>
-                    <p>Construção de galpões industriais com alta resistência e durabilidade estrutural.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Coberturas Metálicas</h3>
-                    <p>Sistemas de cobertura em aço para proteção de áreas industriais e comerciais.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Projetos Estruturais</h3>
-                    <p>Cálculo estrutural e dimensionamento técnico personalizado em aço.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Reforço Estrutural</h3>
-                    <p>Recuperação de estruturas existentes com técnicas avançadas de engenharia.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Fabricação Sob Medida</h3>
-                    <p>Componentes metálicos customizados conforme especificações técnicas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container section-padding" id="portfolio">
-        <div class="portfolio-header">
-            <div>
-                <span class="tag">Projetos</span>
-                <h2 class="h2-title">Portfólio de<br>Executados</h2>
-            </div>
-            <div class="stat-box" style="text-align: right;">
-                <h3 style="color: var(--accent);">24</h3>
-                <p>Projetos Concluídos</p>
-            </div>
-        </div>
-
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop" alt="Complexo Logístico">
-                <div class="portfolio-content"><span>Industrial</span><h3>Complexo Logístico</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2070&auto=format&fit=crop" alt="Passarela Urbana">
-                <div class="portfolio-content"><span>Infraestrutura</span><h3>Passarela Urbana</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Edifício Multiuso">
-                <div class="portfolio-content"><span>Corporativo</span><h3>Edifício Multiuso</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2040&auto=format&fit=crop" alt="Planta Industrial">
-                <div class="portfolio-content"><span>Manufatura</span><h3>Planta Industrial</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" alt="Sistema de Aço">
-                <div class="portfolio-content"><span>Cobertura</span><h3>Sistema de Aço</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" alt="Montagem Técnica">
-                <div class="portfolio-content"><span>Execução</span><h3>Montagem Técnica</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1535813547-99c456a41d4a?q=80&w=2070&auto=format&fit=crop" alt="Corte de Precisão">
-                <div class="portfolio-content"><span>Tecnologia</span><h3>Corte de Precisão</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=2070&auto=format&fit=crop" alt="Suporte de Usina">
-                <div class="portfolio-content"><span>Energia</span><h3>Suporte de Usina</h3></div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1503387762-592dea58ef21?q=80&w=2070&auto=format&fit=crop" alt="Reforço de Carga">
-                <div class="portfolio-content"><span>Estrutural</span><h3>Reforço de Carga</h3></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="container section-padding">
-        <span class="tag">Diferenciais</span>
-        <h2 class="h2-title">Por que escolher a<br>João Dourado</h2>
-        <div class="diff-list">
-            <div class="diff-item">
-                <div><h3>Alta Resistência Estrutural</h3><p>Estruturas dimensionadas para suportar as mais exigentes cargas e condições ambientais.</p></div>
-            </div>
-            <div class="diff-item">
-                <div><h3>Projetos Sob Medida</h3><p>Soluções personalizadas desenvolvidas conforme as necessidades específicas de cada cliente.</p></div>
-            </div>
-            <div class="diff-item">
-                <div><h3>Entrega no Prazo</h3><p>Compromisso rigoroso com cronogramas e prazos estabelecidos em contrato.</p></div>
+                <div class="pillar-item"><h4>Precisão</h4><p>Engenharia exata em cada detalhe.</p></div>
+                <div class="pillar-item"><h4>Qualidade</h4><p>Materiais certificados e rigorosos.</p></div>
+                <div class="pillar-item"><h4>Tecnologia</h4><p>Equipamentos modernos e avançados.</p></div>
+                <div class="pillar-item"><h4>Confiança</h4><p>Compromisso total com prazos.</p></div>
             </div>
         </div>
     </section>
@@ -283,35 +186,22 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 30px;">JOÃO <span>DOURADO</span></div>
-                    <p style="color: var(--text-dim);">Líder em engenharia de estruturas metálicas de alta performance.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#">Industriais</a></li>
-                        <li><a href="#">Galpões</a></li>
-                        <li><a href="#">Projetos</a></li>
-                    </ul>
+                    <div class="logo" style="margin-bottom: 20px;">JOÃO <span>DOURADO</span></div>
+                    <p style="color: var(--text-dim); font-size: 0.85rem;">Líder em engenharia de estruturas metálicas de alta performance.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Navegação</h4>
                     <ul>
                         <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
                         <li><a href="#portfolio">Projetos</a></li>
-                        <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contato</h4>
                     <p class="contact-info">(92) 9501-0476</p>
-                    <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 10px;">contato@joaodourado.com.br</p>
-                    <p style="color: var(--text-dim); font-size: 0.8rem;">Manaus, AM - Brasil</p>
+                    <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 5px;">Manaus, AM - Brasil</p>
                 </div>
-            </div>
-            <div style="padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.8rem; color: #444; margin-top: 60px;">
-                <p>© 2026 João Dourado Metal Structures. Todos os direitos reservados.</p>
-                <p>Desenvolvido com Tecnologia Industrial</p>
             </div>
         </div>
     </footer>
